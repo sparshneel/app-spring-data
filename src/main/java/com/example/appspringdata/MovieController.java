@@ -38,8 +38,6 @@ public class MovieController {
         return movieRepo.saveWithAudit(movie);
     }
 
-//    @GetMapping("/delete")
-//    void delete(String movieId) {
-//        movieRepo.deleteById(movieId);
-//    }
+    @GetMapping("/movielist")
+    Iterable<MovieProjection> findAllMovieProjections() { return movieRepo.findAllMovieProjectionsBy(); }
 }

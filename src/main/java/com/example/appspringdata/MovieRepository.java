@@ -17,4 +17,9 @@ interface MovieRepository extends Neo4jRepository<Movie, String> {
             "SET m += $movie.__properties__, m.lastUpdated = datetime()" +
             "RETURN m;")
     Movie saveWithAudit(Movie movie);
+
+    Iterable<MovieProjection> findAllMovieProjectionsBy();
+
+    @Query("MATCH (m:Movie)<-[r:ACTED_IN]-(p:Person) RETURN m, COUNT(p) AS castSize")
+    Iterable<MovieDTOProjection> findAllDTOProjectionsWithCustomQuery();
 }
