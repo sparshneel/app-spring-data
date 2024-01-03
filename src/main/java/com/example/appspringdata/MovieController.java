@@ -40,4 +40,7 @@ public class MovieController {
 
     @GetMapping("/movielist")
     Iterable<MovieProjection> findAllMovieProjections() { return movieRepo.findAllMovieProjectionsBy(); }
+
+    @GetMapping("/dtocast")
+    Iterable<MovieDTOProjection> findAllMovieDTOProjections() { return movieRepo.findAllDTOProjectionsWithCustomQuery(); }
 }
