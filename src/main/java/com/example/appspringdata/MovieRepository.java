@@ -20,6 +20,7 @@ interface MovieRepository extends Neo4jRepository<Movie, String> {
 
     Iterable<MovieProjection> findAllMovieProjectionsBy();
 
-    @Query("MATCH (m:Movie)<-[r:ACTED_IN]-(p:Person) RETURN m, COUNT(p) AS castSize")
+    @Query("MATCH (m:Movie)<-[r:ACTED_IN]-(p:Person) " +
+            "RETURN m, COUNT(p) AS castSize LIMIT 10;")
     Iterable<MovieDTOProjection> findAllDTOProjectionsWithCustomQuery();
 }
