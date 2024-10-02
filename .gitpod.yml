@@ -12,5 +12,5 @@ ports:
 
 vscode:
   extensions:
-    - pivotal.vscode-spring-boot
+    - vmware.vscode-spring-boot
     - vscjava.vscode-java-pack
