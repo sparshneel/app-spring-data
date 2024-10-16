@@ -30,13 +30,8 @@ public class MovieController {
 
     @DeleteMapping("/delete")
     void delete(@RequestParam String movieId) {
-        System.out.println("HELLO!");
         movieRepo.deleteById(movieId);
-    }
-
-    @PutMapping("/update")
-    Movie update(@RequestBody Movie movie) {
-        return movieRepo.save(movie);
+        System.out.println("Deleted movie with movieId: " + movieId);
     }
 
     @GetMapping("/person")
@@ -44,6 +39,13 @@ public class MovieController {
         return movieRepo.findMoviesByPerson(name);
     }
 
+    //TODO: Fix! This is overwriting properties!
+    @PutMapping("/update")
+    Movie update(@RequestBody Movie movie) {
+        return movieRepo.save(movie);
+    }
+
+    //TODO: Figure out if we can update existing props instead!
     @PostMapping("/saveaudit")
     Movie saveWithAudit(@RequestBody Movie movie) {
         return movieRepo.saveWithAudit(movie);
