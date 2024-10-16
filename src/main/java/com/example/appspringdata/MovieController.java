@@ -28,6 +28,17 @@ public class MovieController {
         return movieRepo.save(movie);
     }
 
+    @DeleteMapping("/delete")
+    void delete(@RequestParam String movieId) {
+        System.out.println("HELLO!");
+        movieRepo.deleteById(movieId);
+    }
+
+    @PutMapping("/update")
+    Movie update(@RequestBody Movie movie) {
+        return movieRepo.save(movie);
+    }
+
     @GetMapping("/person")
     Iterable<Movie> findMoviesByPerson(@RequestParam String name) {
         return movieRepo.findMoviesByPerson(name);
