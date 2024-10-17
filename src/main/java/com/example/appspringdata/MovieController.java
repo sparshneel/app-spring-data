@@ -39,16 +39,9 @@ public class MovieController {
         return movieRepo.findMoviesByPerson(name);
     }
 
-    //TODO: Fix! This is overwriting properties!
-    @PutMapping("/update")
-    Movie update(@RequestBody Movie movie) {
-        return movieRepo.save(movie);
-    }
-
-    //TODO: Figure out if we can update existing props instead!
-    @PostMapping("/saveaudit")
-    Movie saveWithAudit(@RequestBody Movie movie) {
-        return movieRepo.saveWithAudit(movie);
+    @PutMapping("/updateVotes")
+    Movie updateVotes(@RequestParam String movieId) {
+        return movieRepo.incrementImdbVotes(movieId);
     }
 
     @GetMapping("/movielist")

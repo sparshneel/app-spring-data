@@ -13,10 +13,10 @@ interface MovieRepository extends Neo4jRepository<Movie, String> {
             "RETURN m, collect(r), collect(p);")
     Iterable<Movie> findMoviesByPerson(String name);
 
-    @Query("MERGE (m:Movie {movieId: $movie.__id__})" +
-            "SET m += $movie.__properties__, m.lastUpdated = datetime()" +
+    @Query("MATCH (m:Movie {movieId: $movieId}) " +
+            "SET m.imdbVotes = coalesce(m.imdbVotes+1, 1) " +
             "RETURN m;")
-    Movie saveWithAudit(Movie movie);
+    Movie incrementImdbVotes(String movieId);
 
     Iterable<MovieProjection> findAllMovieProjectionsBy();
 
