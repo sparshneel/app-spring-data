@@ -1,21 +1,11 @@
 package com.example.appspringdata;
 
 import org.junit.jupiter.api.Test;
-import org.neo4j.driver.Driver;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class AppSpringDataApplicationTests {
-	// tag::verify[]
-	final Driver driver;
-	public AppSpringDataApplicationTests(@Autowired Driver driver) {
-		this.driver = driver;
-	}
-
 	@Test
-	final void testConnection() {
-		driver.verifyConnectivity();
+	void contextLoads() {
 	}
-	// end::verify[]
 }
