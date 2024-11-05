@@ -5,6 +5,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class AppSpringDataApplicationTests {
+    @Test
+    void contextLoads() {
+    }
+
     // tag::verify[]
     final Driver driver;
     public AppSpringDataApplicationTests(@Autowired Driver driver) {
